@@ -1,0 +1,359 @@
+<#assign base=request.contextPath />
+<!DOCTYPE html>
+<html>
+<head>
+<base id="base" href="${base}">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>HappyMMall</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="${base}/static/js/layer/layer.js"></script>
+
+<link href="${base}/static/css/style.css" rel="stylesheet"/>
+<script src="${base}/static/js/index.js" type="text/javascript"></script>
+</head>
+<body>
+<!--
+    主页为商品展示页,登陆分为admin登录 / client登录
+-->
+<!--AlldivContext-->
+<div class="page">
+    <!--页眉-->
+    <div id="index_header">
+        <!--页眉内容-->
+        <div id="index_header_context">
+            <!--log-->
+            <div id="index_log">
+                <img src="${base}/static/img/logo-1.png">
+                <a href="${base}"></a>
+                </img>
+            </div>
+            <!--搜索-->
+            <div id="index_search">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <input type="text" id="keyword" class="form-control" placeholder="Iphone X"/>
+                                <span id="index_search_bott" class="input-group-addon" style="cursor: pointer;">
+                                    <img src="${base}/static/img/f3964abe005d68c3de1adb105a47dd65.png"
+                                         style="width: 20px;height: 20px">
+                                </span>
+                    </div>
+                </form>
+            </div>
+            <!--用户中心-->
+            <div class="user-center">
+                <!--已登录-->
+                <ul class="login-hide" style="display: none">
+                    <div class="temp-space"></div>
+                    <!--消息-->
+                    <li class="message">
+                        <!--消息列表-->
+                        <a class="message-list">
+                            <i></i>
+                        </a>
+                        <!--消息列表 end-->
+                    </li>
+                    <!--消息 end-->
+                    <!--购物车-->
+                    <li class="cart">
+                        <!--购物车列表-->
+                        <a class="cart-list">
+                            <i></i>
+                        </a>
+                        <!--购物车列表 end-->
+                    </li>
+                    <!--购物车 end-->
+                    <!--用户-->
+                    <li class="user">
+                        <div class="user-info">
+                            <i class="iconfont"></i><!--向下-->
+                            <a class="user-name" target="_blank"></a><!--username-->
+                            <i class="userico_ico"></i><!--用户头像-->
+                            <div class="user-info-box">
+                                <a class="index-logout" href="javascript:logout();">退出</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!--用户 end-->
+                </ul>
+                <!--已登录 end-->
+
+                <!--未登录-->
+                <ul id="unlogin" class="unlogin">
+                    <li>
+                        <!--用户登录-->
+                        <a href="javascript:loginWindow();" data-href="${base}/user/loginApp.do" class="nav-unlogin">
+                            登录
+                            <i></i>
+                        </a>
+                        <!--用户注册-->
+                        <a href="${base}/register.do" >
+                            注册
+                        </a>
+                    </li>
+                </ul>
+                <!--未登录 end-->
+            </div>
+            <!--用户中心 end-->
+        </div>
+        <!--页眉内容 end-->
+    </div>
+    <!--页眉 end-->
+    <!--主体背景-->
+    <div id="main_back">
+        <!--主体-->
+        <div class="index_main">
+            <!--内容一-->
+            <div class="index_middle">
+                <!--左上侧商品导航栏-->
+                <div id="index_navigation">
+                    <ul class="topmenu">
+                        <div class="toptitle">全部商品分类</div><!--标题-->
+                        <div class="childtitle"></div><!--子标题-->
+                    </ul>
+                </div>
+                <!--左上侧商品导航栏 end-->
+                <!--中上促销轮播图片-->
+                <div id="index_rollImg">
+                    <img id="v_rollImg" src="${base}/static/img/1.jpg"/>
+                </div>
+                <!--中上促销滚动图片 end-->
+                <!--右上侧系统公告 引导注册 等待-->
+                <div id="index_notice">
+
+                </div>
+                <!--右上侧系统公告 end-->
+            </div>
+            <!--内容一 end-->
+            <!--内容二 秒杀限时抢-->
+            <div class="index_block1">
+
+            </div>
+            <!--内容二 秒杀限时抢 end-->
+
+            <!--后期拓展-->
+            <div></div>
+            <!--后期拓展 end-->
+        </div>
+        <!--主体 end-->
+    </div>
+    <!--主体背景 end-->
+    <!--页脚-->
+    <div id="index_footer">
+        <div class="copyright">
+            <p>Copyright © 2018 <a href="${base}">HappyMMall</a>, All rights reserved</p>
+        </div>
+        <!--Todo管理后台登录-->
+        <!--反馈及建议-->
+    </div>
+    <!--页脚 end-->
+</div>
+<!--AlldivContext end-->
+<!--登录窗口-->
+<div id="login_box" style="display: none">
+    <div class="row" style="width: 420px;  margin-left:75px; margin-top:10px;">
+        <form action="${base}/user/login.do" method="post">
+            <!--标题-->
+            <h1 style='font-size: 400%;color: #fff;margin-left:125px;margin-bottom:30px'>登&nbsp;&nbsp;&nbsp;&nbsp;录</h1>
+            <!--账号-->
+            <div class='col-sm-12'>
+                <div class='input-group'>
+                <!--登录图片-->
+                <div></div>
+                <input id='username' name='username' style='width: 250px' type='text' class='form-control' placeholder='请输入账号/邮箱'/>
+                </div>
+            </div>
+            <!--密码-->
+            <div class='col-sm-12' style='margin-top: 15px;margin-bottom: 40px'>
+                <div class='input-group'>
+                <!--密码图片-->
+                <div></div>
+                <input id='password' name='password' style='width: 250px' type='password' class='form-control' placeholder='请输入密码'/>
+                </div>
+            </div>
+            <!--按钮-->
+            <div class='login-btn' style='margin-left: 90px'>
+                <button class='btn btn-info' type='submit' style='width: 90px;height: 30px'>登&nbsp;&nbsp;录</button>
+                <button class='btn' type='reset' style='margin-left: 30px;width: 90px;height: 30px'>重&nbsp;&nbsp;置</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--登录窗口 end-->
+<#if currentUser?exists>
+    <!--客户账号登录 获取用户信息-->
+    <script>
+        $(".unlogin").hide();//隐藏未登录div
+        $(".login-hide").show();//显示已登录
+        $.ajax({
+            type: "POST", //提交方式
+            url: "${base}/user/get_user_info.do",//路径
+            success: function (result) {//返回数据根据结果进行相应的处理
+
+                $(".user-info .user-name").text(result.data.username);
+
+            }
+        });
+    </script>
+</#if>
+<!--如果session中无用户 则单纯显示商品信息即可-->
+<script>
+
+    $(".unlogin li a").mouseover(function() {
+        $(this).css({"color":"#e4393c", "font-weight": "bold"});
+    });
+    $(".unlogin li a").mouseout(function(){
+        $(this).css({"color":"black", "font-weight": "normal"});
+    });
+    function logout(){
+        $.ajax({
+            type: 'POST',
+            url: '${base}/user/logout.do',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            cache: false,
+            success:function(json){
+                if(json.status==0){
+                    //alert("退出成功");
+                    window.location.href="/index.do";
+                }else{
+                    alert("退出失败")
+                }
+            }
+        });
+    }
+    function loginWindow(){
+    var idx=layer.open({
+            title:[,'opacity:0;'],
+            resize:false,//禁止窗口拉伸
+            type: 1,
+            shade: 0.6, //遮罩透明度
+            anim: 1, //0-6的动画形式，-1不开启
+            shift: 1,
+            shadeClose: false,
+            area: ['550px', '400px'],
+            content:$("#login_box").html()
+        });
+
+        layer.style(idx, {
+            "background": "url('../static/img/loginBoxImg.jpg')",
+        });
+    }
+
+    //页面初加载
+    $(function () {
+        //商品分类
+        $.ajax({
+            type: 'GET',
+            url: '${base}/category/list.do',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+
+                if (data && data.data.length > 0) {
+                    $.each(data.data, function (index, paterItem) {
+                        var childItemList=new Array();
+                        if(paterItem.childCategoryVo.length>0){
+                            $.each(paterItem.childCategoryVo, function (index, childItem) {
+                                childItemList.push(childItem);
+                            });
+                        }else{
+                            childItemList.push("");
+                        }
+
+                        var html= getChildItem(childItemList);
+
+                        $(".childtitle").append
+                        ("<li>"+
+                            "<a href='#'>" + paterItem.name + "</a>" +
+                            "<span></span>"+
+                            "<div class='submenu'>" +
+                                "<div class='leftdiv'>" +
+                                    "<dl>" +
+                                        "<dt><a href='#'>" + paterItem.name + "</a></dt>"+
+                                        "<dd>"+ html +"</dd>"+
+                                    "</dl>"+
+                                "</div>"+
+                                "<div class='rightdiv'>"+
+                                    "<dl>"+
+                                        "<dd>"+
+                                            "<a href='http://sale.jd.com/act/1XDZ6ShE5M7tTrl.html'>"+
+                                                "<img src='http://img30.360buyimg.com/erpVCAare/g16/M00/0B/1B/rBEbRlOCFcoIAAAAAAArMNB2tlkAACTlwDgVG8AACtI514.jpg'"+
+                                                     "width='194' height='70' title='家电'>"+
+                                            "</a>"+
+                                        "</dd>"+
+                                        "<dd>"+
+                                            "<a href='http://sale.jd.com/act/v8kJIaPmsMGuebpH.html'>"+
+                                                "<img src='http://img30.360buyimg.com/erpVCAare/g16/M00/0B/19/rBEbRlOAiHUIAAAAAAAx8X2c6oIAACTCAP56A4AADIJ112.jpg'"+
+                                                     "width='194' height='70' title='小家电--三请聚宝盆'>"+
+                                            "</a>"+
+                                        "</dd>"+
+                                    "</dl>"+
+                                    "<dl>"+
+                                        "<dt>推荐品牌</dt>"+
+                                        "<dd>"+
+                                            "<a href='#'>苏泊尔旗舰店</a>"+
+                                        "</dd>"+
+                                        "<dd>"+
+                                            "<a href='#'>九阳旗舰店</a>"+
+                                        "</dd>"+
+                                        "<dd>"+
+                                            "<a href='#'>东菱旗舰店</a>"+
+                                        "</dd>"+
+                                        "<dd>"+
+                                            "<a href='#'>海尔统帅旗舰店</a>"+
+                                        "</dd>"+
+                                        "<dd>"+
+                                            "<a href='#'>小熊旗舰店</a>"+
+                                        "</dd>"+
+                                    "</dl>"+
+                                    "<img src='#' class='rightPic' />"+
+                                "</div>"+
+                            "</div>"
+                        );
+
+                    });
+                }
+            }
+        });
+
+        //子类节点集合拼接 html
+        function getChildItem(childItemList){
+                var html="";
+                for(var i=0;i<childItemList.length;i++){
+                    html+="<a href='#'>"+childItemList[i].name+"</a>";
+                }
+                return html;
+        }
+
+        //商品搜索
+        $("#index_search_bott").click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '${base}/product/list.do',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    "keyword": $("#keyword").val()
+                },
+                success: function (data) {
+                    if (data.status == 0) {
+                        alert("success");
+                    }
+                    else if (data.status == 1) {
+                        alert("field");
+                    }
+                    else if (data.status == 2) {
+                        alert("参数错误");
+                    } else {
+                        alert("未知");
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

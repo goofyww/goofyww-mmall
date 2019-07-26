@@ -1,0 +1,443 @@
+@charset "UTF-8";
+@import url(common.css);
+/*--当前变量--*/
+.page {
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#main_back{
+    position: relative;
+    /*background: url("../img/login-ground.jpg") no-repeat;
+    background-size: 100% 100%;*/
+    background-color: #F5F5F5;
+    padding: 0 15px 0 15px;
+    box-sizing: border-box;
+}
+#index_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 56px;
+    color: #000;
+    background-color: #fff;
+}
+#index_footer{
+    position: relative;
+    height: 70px;
+    background: #1e1e22;
+    color: #fff;
+    min-width: 1120px;
+}
+#index_footer a,.unlogin li a{
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+}
+.copyright{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+    background: rgba(30,30,34,.8);
+    color: #a39e9e;
+    font-size: 12px;
+    width: 100%;
+}
+.index_main{
+    position: relative;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 1100px;
+    padding-top: 56px;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.index_middle{
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: 500px;
+}
+#index_navigation{
+    float: left;
+    margin: 10px 10px 10px 10px;
+    width: 220px;
+    height: 480px;
+    font-size: 10pt;
+    background: #FFF;
+}
+.topmenu{
+    display: block;/* 元素块级显示 */
+    width: 220px;
+    height: 480px;
+    border: 2px solid #e4393c;/* 给个外边框 */
+    margin: 0;
+    padding: 0;
+}
+.toptitle{
+    font-size: 12pt;
+    color: white;
+    background-color: #e4393c;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.topmenu .childtitle li{
+    padding-left: 8px;
+    list-style-type: none;
+    line-height: 30px;
+    height: 30px;
+    font-size: 11pt;
+    z-index: 3;/* 优先级 数字最大的漂浮在最上面 最小的在底部*/
+    background-image: url("../img/5411027300014f0200220030.png");/* 右边箭头图片做背景 */
+    background-repeat: no-repeat;
+    background-position:right;
+}
+.topmenu li a{
+    text-decoration:none;/* 取消下划线*/
+    color: #313131;
+}
+.topmenu li a:hover{
+    text-decoration: none;
+    font-weight: bold;/* 字体加粗 */
+    color: #e4393c;
+
+}
+.topmenu li:hover{
+    border:1px solid #DDD;
+    border-right: 0;
+    box-shadow: 0 0 8px #DDD;
+    -moz-box-shadow:0 0 8px #DDD;/* 兼容fixfox */
+    -webkit-box-shadow:0 0 8px #DDD;/* 兼容chrome */
+}
+.user-info-box{
+    display: none;
+    width: 120px;
+    height:120px;
+    top: 56px;
+    position: absolute;
+    border: 1px solid #DDD;
+    padding-top: 15px;
+    z-index: 5;
+    background: #fff;
+    box-shadow: 0 0 8px #DDD;
+    -moz-box-shadow:0 0 8px #DDD;/* fixfox */
+    -webkit-box-shadow:0 0 8px #DDD;/* chrome */
+}
+.submenu{
+    display: none;
+    width: 715px;
+    left: 220px;
+    position: absolute;
+    top: 66px;
+    border: 1px solid #DDD;
+    z-index: 5;
+    background: white;
+    box-shadow: 0 0 8px #DDD;
+    -moz-box-shadow:0 0 8px #DDD;/* fixfox */
+    -webkit-box-shadow:0 0 8px #DDD;/* chrome */
+}
+.leftdiv
+{
+    float: left;
+    width: 490px;
+    margin: 5px;
+}
+.rightdiv
+{
+    float: left;
+    width: 200px;
+    margin: 5px;
+}
+.topmenu li:hover .submenu
+{
+    display: block;
+}
+
+.topmenu li:hover span
+{
+    background: white;
+    display: inline-block;
+    z-index: 20;
+    width: 30px;
+    height: 30px;
+    float: right;
+    position: relative;
+}
+.leftdiv dl
+{
+    display: block;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 6px;
+    overflow: hidden;
+}
+.leftdiv dl dt
+{
+    display: block;
+    float: left;
+    width: 70px;
+    text-align: right;
+    height: 22px;
+    line-height: 22px;
+    padding-right: 6px;
+}
+
+.leftdiv dl dt a
+{
+    display: block;
+    color: #e4393c;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 10pt;
+    margin: 12px 0;
+}
+.leftdiv dl dt a:hover{
+    text-decoration: none;
+    font-size: 11pt;
+    font-weight: bold;/* 字体加粗 */
+    color: #e4393c;
+}
+.leftdiv dl dd
+{
+    display: block;
+    overflow: hidden;
+}
+.leftdiv dl dd a
+{
+    /* 在此插入CSS样式 */
+    display: block;
+    color: #737373;
+    float: left;
+    border-left: 1px solid #CCC;
+    font-size: 9pt;
+    height:14px;
+    line-height:14px;
+    padding: 0 8px;
+    margin: 16px 0;
+
+}
+.rightdiv dl dd
+{
+    margin: 3px 0;
+}
+
+.rightdiv dl dt
+{
+    color: #e4393c;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.rightdiv dl dd a
+{
+    font-size: 9pt;
+    color: #737373;
+    line-height: 22px;
+}
+.rightdiv dl dd a:hover
+{
+    color: #737373;
+    font-weight: normal;
+}
+#index_notice{
+    position: relative;
+    float: left;
+    margin: 10px auto 10px 10px;
+    width: 170px;
+    height: 480px;
+    border: 1px solid black;
+}
+.index_block1{
+    position: relative;
+    height: 200px;
+    background: #10707f;
+    color: #10707f;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 1100px;
+}
+#index_rollImg{
+    position: relative;
+    float: left;
+    width: 670px;
+    height: 480px;
+    margin: 10px auto 10px auto;
+    background: #b5b0b8;
+    color: #b5b0b8;
+}
+#index_header_context{
+    position: relative;
+    width: 1100px;
+    height: 56px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+#v_rollImg{
+    position: absolute;
+    z-index: 1;
+    width: 670px;
+    height: 480px;
+}
+#index_log{
+    position: relative;
+    float: left;
+    width: 220px;
+    height: 46px;
+    margin-top: 5px;
+}
+#index_search{
+    position: relative;
+    float: left;
+    margin-left: 145px;
+    width: 350px;
+    height: 46px;
+    margin-top: 5px;
+    padding-top: 7px;
+}
+.unlogin {
+    float: right;
+    color: #000;
+    height: 56px;
+    padding-top: 15px;
+    margin-right: 10px;
+}
+.unlogin li a i{
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background: #000;
+    margin:auto 10px auto 10px;
+}
+.user-center{
+    position: relative;
+    float: right;
+    /*width: auto;*/
+    /*height: 46px;*/
+    width: 320px;
+    height: 56px;
+    /*margin-top: 7px;*/
+}
+.temp-space{
+    position: relative;
+    float: left;
+    height: 56px;
+    width: 120px;
+}
+.user-info{
+    position: relative;
+    float: right;
+    height: 56px;
+    width: 116px;
+    padding-top: 15px;
+}
+.user-info:hover .user-info-box{
+    display: block;
+}
+.user-info-box .index-logout{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    text-decoration:none;/* 取消下划线*/
+    color: #313131;
+}
+.user-info-box a:hover{
+    color: #6c757d;
+    font-weight: bold;/* 字体加粗 */
+}
+
+.iconfont{
+    position: relative;
+    float: right;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-top: 10px;
+    margin-left: 4px;
+    margin-right: 7px;
+    background-repeat: no-repeat;
+    background-image: url("../img/5411027300014f0200220030.png");
+    background-position: -8px -13px;
+    transform:rotate(90deg);/*图片右旋转90度*/
+}
+.user-name{
+    position: relative;
+    float: right;
+    display: block;
+    margin-left: 5px;
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+}
+.userico_ico{
+    position: relative;
+    float: right;
+    display: block;
+    width: 38px;
+    height: 16px;
+    margin-top: 3px;
+    background-repeat: no-repeat;
+    background-position: -210px -257px;
+    background-image:url("../img/sprite.shortcutUserinfo.png");
+}
+.message{
+    position: relative;
+    float: left;
+    display: block;
+    width: 40px;
+    height: 56px;
+    padding-left: 4px;
+    padding-top: 15px;
+}
+.message:hover{
+    background-color: #F5F5F5;
+}
+.message-list{
+    position: relative;
+    float: left;
+    display: block;
+    width: 30px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 30px 20px;
+    background-image: url("../img/Message_133.61095890411px_1180822_easyicon.net.png");
+}
+.cart:hover{
+    background-color: #F5F5F5;
+}
+.cart{
+    position: relative;
+    float: left;
+    display: block;
+    width: 42px;
+    height: 56px;
+    padding-left: 4px;
+    padding-top: 12px;
+}
+.cart-list{
+    position: relative;
+    float: left;
+    display: block;
+    width: 32px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: 35px 25px;
+    background-image: url("../img/Shopping_Cart_128px_1178620_easyicon.net.png");
+}
+
+
+
+
