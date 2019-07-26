@@ -1,7 +1,6 @@
 package com.oecoo.gf.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,17 +9,16 @@ import java.util.Date;
 /**
  * Created by gf on 2018/4/30.
  */
+@Slf4j
 public class DateTimeUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(DateTimeUtil.class);//添加日志支持
+    public static final String FORMAT_ON_SECEND_24 = "yyyy-MM-dd HH:mm:ss";    //年-月-日 时:分:秒 （默认）（24小时制）
 
-    private static final String FORMAT_ON_SECEND_24 = "yyyy-MM-dd HH:mm:ss";    //年-月-日 时:分:秒 （默认）（24小时制）
+    public static final String FORMAT_ON_SECEND_12 = "yyyy-MM-dd hh:mm:ss";    //年-月-日 时:分:秒 （12小时制）
 
-    private static final String FORMAT_ON_SECEND_12 = "yyyy-MM-dd hh:mm:ss";    //年-月-日 时:分:秒 （12小时制）
+    public static final String formatTimeOnMinStyle = "yyyy-MM-dd HH:mm";       //年-月-日 时:分
 
-    private static final String formatTimeOnMinStyle = "yyyy-MM-dd HH:mm";       //年-月-日 时:分
-
-    private static final String formatDateStyle = "yyyy-MM-dd";          //年-月-日
+    public static final String formatDateStyle = "yyyy-MM-dd";          //年-月-日
 
     private static Date date;
 
@@ -40,7 +38,7 @@ public class DateTimeUtil {
         try {
             date = simpleDateFormat.parse(str);
         } catch (ParseException e) {
-           logger.error("时间格式输入错误,请指定格式为"+formatStyle,e);
+           log.error("时间格式输入错误,请指定格式为"+formatStyle,e);
         }
         return date;
     }
@@ -56,7 +54,7 @@ public class DateTimeUtil {
         try {
             date = simpleDateFormat.parse(str);
         } catch (ParseException e) {
-            logger.error("时间格式输入错误,请指定格式为"+DateTimeUtil.FORMAT_ON_SECEND_24,e);
+            log.error("时间格式输入错误,请指定格式为"+DateTimeUtil.FORMAT_ON_SECEND_24,e);
         }
         return date;
     }

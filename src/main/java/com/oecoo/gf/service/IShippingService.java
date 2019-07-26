@@ -11,9 +11,9 @@ public interface IShippingService {
 
     ServerResponse addShipping(Integer userId, Shipping shipping);
 
-    ServerResponse updateShipping(Integer userId,Shipping shipping);
+    ServerResponse updateShipping(Integer userId, Shipping shipping);
 
-    ServerResponse deleteShipping(Integer userId,Integer shippingId);
+    ServerResponse deleteShipping(Integer userId, Integer shippingId);
 
     ServerResponse<Shipping> select(Integer userId, Integer shippingId);
 

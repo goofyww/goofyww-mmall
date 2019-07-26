@@ -1,52 +1,53 @@
-#!/bin/sh
-################################################
+#!/usr/bin/env bash
+echo "=============进入git项目目录路径=================="
+cd /developer/git-repository/mmall_learning
 
-#定义路径变量
-export PROJ_PATH=`pwd`
-export TOMCAT_APP_PATH=/developer/apache-tomcat-7.0.90
+echo "==============git切换分支到"$1"=================="
+git checkout $1
 
-#杀掉进程
-killTomcat()
-{
-    pid=`ps -ef|grep tomcat|grep -v grep|awk '{print $2}'`
-    echo "tomcat Id list :$pid"
-    if [ "$pid" = "" ]
-    then
-        echo "no tomcat pid alive"
-    else
-        kill -9 $pid
-    fi
-}
+echo "==================git fetch====================="
+git fetch
 
-cd $PROJ_PATH
-mvn clean install
+echo "==================git pull======================"
+git pull
 
-killTomcat
+echo "==============编译并跳过单元测试=================="
+mvn clean package -Dmaven.test.skip=true -Pdev
 
-INSTALLDIR=$TOMCAT_APP_PATH/webapps
+echo "===============删除旧的ROOT.war=================="
+rm /developer/$2/webapps/ROOT.war
 
-#push code to server and start server
-cd $INSTALLDIR
+echo "======拷贝编译出来的war包到tomcat下-ROOT.war======"
+cp /developer/git-repository/mmall_learning/target/mmall.war /developer/$2/webapps/ROOT.war
 
-#删除根目录工程
-rm -rf ROOT
-rm -rf ROOT.war
-rm -rf gwsystem
-rm -f  gwsystem.war
+echo "===========删除tomcat下旧的ROOT文件夹============"
+rm -rf /developer/$2/webapps/ROOT
 
-#copy项目到Tomcat路径下
-cp -ar $PROJ_PATH/robot/target/*.war $INSTALLDIR
+echo "=================关闭tomcat====================="
+/developer/$2/bin/shutdown.bat
 
-#项目重命名
-mv *.war ROOT.war
+echo "================= sleep 10s ===================="
+for i in {1..10}
+do
+    echo $i"s"
+    sleep 1s
+done
 
-#startup Tomcat
-sh $TOMCAT_APP_PATH/bin/startup.sh
-RESULT=`netstat -lntup|grep 8081|wc -l`
-if [ $RESULT -eq 1 ];then
-   echo "tomcat start sucessfull"
-else
-   sh $TOMCAT_APP_PATH/bin/startup.sh
-fi
+echo "=================启动tomcat====================="
+/developer/$2/bin/startup.bat
 
-sleep 1s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import com.oecoo.gf.pojo.Category;
 import java.util.List;
 
 public interface CategoryMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Category record);
@@ -30,4 +31,5 @@ public interface CategoryMapper {
     int updateCategoryStatusByPrimaryKey(Category category);
 
     List<Category> selectPaterCategory();
+
 }

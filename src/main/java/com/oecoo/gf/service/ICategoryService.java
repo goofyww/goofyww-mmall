@@ -13,13 +13,13 @@ public interface ICategoryService {
 
     ServerResponse<String> addCategory(String categoryName, Integer parentId);
 
-    ServerResponse<String> updateCategoryName(Integer categoryId,String categoryName);
+    ServerResponse<String> updateCategoryName(Integer categoryId, String categoryName);
 
     ServerResponse<List<Category>> getChildParallelCategory(Integer categoryId);
 
     ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId);
 
-    ServerResponse<String> updateCategoryStatus(Integer categoryId,Integer status);
+    ServerResponse<String> updateCategoryStatus(Integer categoryId, Integer status);
 
     ServerResponse removeCategoryById(Integer categoryId);
 

@@ -10,11 +10,23 @@ import java.util.Set;
 public class Const {
 
     public static final String CURRENT_USER = "currentUser";
-    public static final String UserName = "username";
-    public static final String Email = "email";
+    public static final String USER_NAME = "username";
+    public static final String EMAIL = "email";
+
+    public interface REDIS_LOCK {
+        String CLOSE_ORDER_LOCK_NAME = "CLOSE_ORDER_LOCK_NAME";//关闭订单的分布式锁对应的key
+    }
 
     public interface ProductListOrderBy {
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_asc", "price_desc");
+    }
+
+    public interface RedisCacheExTime {
+        int REDIS_SESSION_EXTIME = 60 * 30;//session 过期时间
+    }
+
+    public interface TokenCache {
+        public static final String TOKEN_PREFIX = "token_";
     }
 
     public interface Cart {
@@ -84,9 +96,9 @@ public class Const {
             return code;
         }
 
-        public static OrderStatusEnum codeOf(int code){
-            for(OrderStatusEnum orderStatusEnum : values()){
-                if(orderStatusEnum.getCode() == code){
+        public static OrderStatusEnum codeOf(int code) {
+            for (OrderStatusEnum orderStatusEnum : values()) {
+                if (orderStatusEnum.getCode() == code) {
                     return orderStatusEnum;
                 }
             }
@@ -140,9 +152,10 @@ public class Const {
         public int getCode() {
             return code;
         }
-        public static PaymentTypeEnum codeOf(int code){
-            for(PaymentTypeEnum paymentTypeEnum : values()){
-                if(paymentTypeEnum.getCode() == code){
+
+        public static PaymentTypeEnum codeOf(int code) {
+            for (PaymentTypeEnum paymentTypeEnum : values()) {
+                if (paymentTypeEnum.getCode() == code) {
                     return paymentTypeEnum;
                 }
             }

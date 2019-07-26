@@ -34,6 +34,7 @@ public class FTPUtil {
         logger.info("FTP Server 结束上传 ，上传结果:{}",isSuccess);
         return isSuccess;
     }
+
     private boolean uploadFile (String remotePath,List<File> files) throws IOException {
         boolean isSuccess = true;
         FileInputStream fis = null;

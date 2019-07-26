@@ -15,10 +15,10 @@ public enum  ResponseCode {
      * --------------------------------------
      *       ↓    ↓
      */
-    SUCCESS(0,"SUCCESS"),                       //成功
-    ERROR(1,"ERROR"),                           //错误
-    NEED_LOGIN(10,"NEED_LOGIN"),                //需要登录
-    ILLEGAL_ARGUMENT(2,"ILLEGAL_ARGUMENT");     //参数错误
+    SUCCESS(0,"SUCCESS"),                                       //成功
+    ERROR(1,"ERROR"),                                           //错误
+    NEED_LOGIN(10,"NEED_LOGIN"),                                //需要登录
+    ILLEGAL_ARGUMENT(2,"ILLEGAL_ARGUMENT");                     //参数错误
     /**                                 ↑
      *                       枚举方法的结尾要以 ; 结尾
      */

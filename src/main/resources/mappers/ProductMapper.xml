@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.oecoo.gf.dao.ProductMapper" >
-  <resultMap id="BaseResultMap" type="com.oecoo.gf.pojo.Product" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="subtitle" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="main_image" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="sub_images" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
-      <arg column="stock" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
-  </resultMap>
+<mapper namespace="com.oecoo.gf.dao.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.oecoo.gf.pojo.Product">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="subtitle" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="main_image" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="sub_images" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+            <arg column="stock" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
 
-  <sql id="Base_Column_List" >
+    <sql id="Base_Column_List">
     id, category_id, name, subtitle, main_image, sub_images, detail, price, stock, status, 
     create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-          <include refid="Base_Column_List" />
-    from
-          mmall_product
-    where
-          id = #{id,jdbcType=INTEGER}
-  </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        mmall_product
+        where
+        id = #{id,jdbcType=INTEGER}
+    </select>
 
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from
           mmall_product
     where
@@ -40,7 +40,7 @@
   </delete>
 
 
-  <insert id="insert" parameterType="com.oecoo.gf.pojo.Product" >
+    <insert id="insert" parameterType="com.oecoo.gf.pojo.Product">
     insert into mmall_product (id, category_id, name, 
       subtitle, main_image, sub_images, 
       detail, price, stock, 
@@ -52,120 +52,120 @@
       #{status,jdbcType=INTEGER}, now(), now()
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.oecoo.gf.pojo.Product" >
-    insert into mmall_product
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="categoryId != null" >
-        category_id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="subtitle != null" >
-        subtitle,
-      </if>
-      <if test="mainImage != null" >
-        main_image,
-      </if>
-      <if test="subImages != null" >
-        sub_images,
-      </if>
-      <if test="detail != null" >
-        detail,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
-      <if test="stock != null" >
-        stock,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="categoryId != null" >
-        #{categoryId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="subtitle != null" >
-        #{subtitle,jdbcType=VARCHAR},
-      </if>
-      <if test="mainImage != null" >
-        #{mainImage,jdbcType=VARCHAR},
-      </if>
-      <if test="subImages != null" >
-        #{subImages,jdbcType=VARCHAR},
-      </if>
-      <if test="detail != null" >
-        #{detail,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=DECIMAL},
-      </if>
-      <if test="stock != null" >
-        #{stock,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null" >
-        now(),
-      </if>
-      <if test="updateTime != null" >
-        now(),
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.oecoo.gf.pojo.Product" >
-    update mmall_product
-    <set >
-      <if test="categoryId != null" >
-        category_id = #{categoryId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="subtitle != null" >
-        subtitle = #{subtitle,jdbcType=VARCHAR},
-      </if>
-      <if test="mainImage != null" >
-        main_image = #{mainImage,jdbcType=VARCHAR},
-      </if>
-      <if test="subImages != null" >
-        sub_images = #{subImages,jdbcType=VARCHAR},
-      </if>
-      <if test="detail != null" >
-        detail = #{detail,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        price = #{price,jdbcType=DECIMAL},
-      </if>
-      <if test="stock != null" >
-        stock = #{stock,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-        update_time = now(),
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.oecoo.gf.pojo.Product" >
+    <insert id="insertSelective" parameterType="com.oecoo.gf.pojo.Product">
+        insert into mmall_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="subtitle != null">
+                subtitle,
+            </if>
+            <if test="mainImage != null">
+                main_image,
+            </if>
+            <if test="subImages != null">
+                sub_images,
+            </if>
+            <if test="detail != null">
+                detail,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="subtitle != null">
+                #{subtitle,jdbcType=VARCHAR},
+            </if>
+            <if test="mainImage != null">
+                #{mainImage,jdbcType=VARCHAR},
+            </if>
+            <if test="subImages != null">
+                #{subImages,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.oecoo.gf.pojo.Product">
+        update mmall_product
+        <set>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="subtitle != null">
+                subtitle = #{subtitle,jdbcType=VARCHAR},
+            </if>
+            <if test="mainImage != null">
+                main_image = #{mainImage,jdbcType=VARCHAR},
+            </if>
+            <if test="subImages != null">
+                sub_images = #{subImages,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                detail = #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                stock = #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            update_time = now(),
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.oecoo.gf.pojo.Product">
     update mmall_product
     set category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
@@ -179,7 +179,7 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="checkProductByName" parameterType="string" resultType="int">
+    <select id="checkProductByName" parameterType="string" resultType="int">
     SELECT
           count(1)
     FROM
@@ -188,7 +188,7 @@
           name = #{productName}
   </select>
 
-  <select id="checkProductById" parameterType="int" resultType="int">
+    <select id="checkProductById" parameterType="int" resultType="int">
     SELECT
           count(1)
     FROM
@@ -197,49 +197,56 @@
           id = #{productId}
   </select>
 
-  <select id="selectProductList" resultMap="BaseResultMap">
-    SELECT
-      <include refid="Base_Column_List"/>
-    FROM  mmall_product
-    ORDER BY id ASC
-  </select>
+    <select id="selectProductList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mmall_product
+        ORDER BY id ASC
+    </select>
 
-  <select id="selectByProductName" resultMap="BaseResultMap" parameterType="map"><!--使用pageHelper 传递参数一定要为map-->
+    <select id="selectByProductName" resultMap="BaseResultMap" parameterType="map"><!--使用pageHelper 传递参数一定要为map-->
 
-    SELECT
-          <include refid="Base_Column_List"/>
-    FROM
-          mmall_product
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        mmall_product
 
-    <where>
+        <where>
 
-      <if test="productName != null">
-      AND name LIKE #{productName} <!--这里的and 当if条件可用时 Mybati会将这个and替换为where-->
-      </if>
+            <if test="productName != null">
+                AND name LIKE #{productName} <!--这里的and 当if条件可用时 Mybati会将这个and替换为where-->
+            </if>
 
-      <if test="productId != null">
-      AND id LIKE #{productId}
-      </if>
+            <if test="productId != null">
+                AND id LIKE #{productId}
+            </if>
 
-    </where>
-  </select>
+        </where>
+    </select>
 
-  <select id="selectByNameAndCategoryIds" parameterType="map" resultMap="BaseResultMap">
-    SELECT
-          <include refid="Base_Column_List"/>
-    FROM
-          mmall_product
-    WHERE
-          status = 1           <!--商品的状态为上架-->
-    <if test="keyword != null">
-      AND name like #{keyword}
-    </if>
-    <if test="categoryIds != null">
-      AND category_id in
-      <foreach collection="categoryIds" item="item" index="index" open="(" separator="," close=")">
-        #{item}
-      </foreach>
-    </if>
-  </select>
+    <select id="selectByNameAndCategoryIds" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        mmall_product
+        WHERE
+        status = 1           <!--商品的状态为上架-->
+        <if test="keyword != null">
+            AND name like #{keyword}
+        </if>
+        <if test="categoryIds != null">
+            AND category_id in
+            <foreach collection="categoryIds" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectStockByProductId" resultType="int" parameterType="java.lang.Integer">
+        SELECT stock
+        FROM mmall_product
+        WHERE 1 = 1 AND id = #{id}
+        for update
+    </select>
 
 </mapper>

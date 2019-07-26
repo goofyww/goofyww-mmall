@@ -12,18 +12,17 @@ public interface IProductService {
 
     ServerResponse<String> saveOrUpdateProduct(Product product);
 
-    ServerResponse<String> setProductStatus(Integer productId,Integer status);
+    ServerResponse<String> setProductStatus(Integer productId, Integer status);
 
     ServerResponse<ProductDetailVo> manageProductDetail(Integer productId);
 
     ServerResponse<PageInfo> getProductList(int pageNum, int pageSize);
 
-    ServerResponse<PageInfo> findProduct(Integer productId,String productName,Integer pageNum,Integer pageSize);
+    ServerResponse<PageInfo> findProduct(Integer productId, String productName, Integer pageNum, Integer pageSize);
 
     ServerResponse<ProductDetailVo> getDetailProduct(Integer productId);
 
-    ServerResponse<PageInfo> getProductKeyword(String keyword,Integer categoryId,int pageNum,int pageSize,String orderBy);
-
+    ServerResponse<PageInfo> getProductKeyword(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy);
 
 
 }

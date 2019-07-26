@@ -1,8 +1,7 @@
 package com.oecoo.gf.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,9 +11,8 @@ import java.util.List;
 /**
  * Created by gf on 2018/5/1.
  */
+@Slf4j
 public class FTPUtil {
-
-    private static Logger logger = LoggerFactory.getLogger(FTPUtil.class);//添加日志支持
 
     private static String ftpip = PropertiesUtil.getProperty("ftp.server.ip");
     private static String ftpUser = PropertiesUtil.getProperty("ftp.user");
@@ -27,9 +25,9 @@ public class FTPUtil {
      */
     public static boolean uploadFile(List<File> files) throws IOException {
        FTPUtil ftpUtil = new FTPUtil(ftpip,21,ftpUser,ftpPwd);
-       logger.info("开始与FTP Server建立连接");
+       log.info("开始与FTP Server建立连接");
        boolean isSuccess = ftpUtil.uploadFile("image",files);
-       logger.info("FTP Server 结束上传 ，上传结果:{}",isSuccess);
+       log.info("FTP Server 结束上传 ，上传结果:{}",isSuccess);
        return isSuccess;
     }
     /**
@@ -54,7 +52,7 @@ public class FTPUtil {
                     ftpClient.storeFile(fileItem.getName(),fis);//上传   参数为: 1.文件名  2.输入流(流中的文件位于计算机内存中)
                 }
             } catch (IOException e) {
-                logger.error("-----------------上传ftp远程文件异常------------------",e);
+                log.error("-----------------上传ftp远程文件异常------------------",e);
                 uploaded = false;
                 e.printStackTrace();
             }finally {
@@ -73,7 +71,7 @@ public class FTPUtil {
             ftpClient.connect(ip);
             isSuccess = ftpClient.login(user,pwd);//login 成功 true  失败 false
         } catch (IOException e) {
-          logger.error("----------连接FtpServer异常---------",e);
+          log.error("----------连接FtpServer异常---------",e);
         }
         return isSuccess;
     }
